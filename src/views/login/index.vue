@@ -8,15 +8,24 @@
         <div class="zhong">
           <h2>欢迎回来</h2>
           <span>----账号密码登录----</span>
-          <el-form ref="form" :model="form">
+          <!--登录 -->
+          <el-form
+            :model="ruleForm"
+            :rules="rules"
+            ref="ruleForm"
+            class="demo-ruleForm"
+          >
             <el-form-item>
               <el-input
-                v-model="form.name"
+                v-model="ruleForm.username"
                 placeholder="请输入用户名"
               ></el-input>
             </el-form-item>
             <el-form-item>
-              <el-input v-model="form.name" placeholder="请输入密码"></el-input>
+              <el-input
+                v-model="ruleForm.password"
+                placeholder="请输入密码"
+              ></el-input>
             </el-form-item>
 
             <el-button type="primary">登录</el-button>
@@ -31,8 +40,17 @@
 export default {
   data () {
     return {
-      form: {
-        name: ''
+      ruleForm: {
+        username: '',
+        password: ''
+      },
+      rules: {
+        username: [
+          { required: true, message: '请输入活动名称', trigger: 'blur' }
+        ],
+        password: [
+          { required: true, message: '请输入活动名称', trigger: 'blur' }
+        ]
       }
     }
   }
